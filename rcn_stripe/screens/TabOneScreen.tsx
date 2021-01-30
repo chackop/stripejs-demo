@@ -1,20 +1,26 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet } from "react-native";
 
 import EditScreenInfo from "../components/EditScreenInfo";
 import { Text, View } from "../components/Themed";
 import axios from "axios";
+import PaymentView from "../components/PaymentView";
 
 export default function TabOneScreen() {
+  const [response, setResponse] = useState();
+
+  const [makePayment, setMakePayment] = useState(false);
+  const [paymentStatus, setPaymentStatus] = useState("");
+
+  const cartInfo = {
+    id: "5eruyt35eggr76476236523t3",
+    description: "T Shirt - With react Native Logo",
+    amount: 1,
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View
-        style={styles.separator}
-        lightColor="#eee"
-        darkColor="rgba(255,255,255,0.1)"
-      />
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
+      <PaymentView />
     </View>
   );
 }
